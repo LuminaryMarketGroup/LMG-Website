@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       SEO / SOCIAL META  —  edit copy here.
+       ⚠️ BEFORE LAUNCH: replace every  https://YOUR-DOMAIN.com  below
+          with your real deployed URL so link previews + canonical work.
+       ============================================================ -->
+  <title>Luminary Market Group — Marketing Strategy &amp; Financial Insight</title>
+  <meta name="description"
+        content="Luminary Market Group helps businesses understand their numbers, sharpen their message, and grow with intention — from financial analysis to full-scale marketing campaigns." />
+  <meta name="author" content="Luminary Market Group" />
+  <meta name="theme-color" content="#faf7f0" />
+  <link rel="canonical" href="https://luminarymarketgroup.com/" />
+
+  <!-- Favicons / home-screen icons (all generated, no dependencies) -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <!-- Web app manifest: "Add to Home Screen" name, colors, and icons -->
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Open Graph (Facebook, LinkedIn, iMessage, Slack, Discord…) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Luminary Market Group" />
+  <meta property="og:title"
+        content="Luminary Market Group — Marketing strategy that reads between the lines." />
+  <meta property="og:description"
+        content="From financial analysis to full-scale campaigns, we turn insight into momentum." />
+  <meta property="og:url" content="https://luminarymarketgroup.com/" />
+  <meta property="og:image" content="https://luminarymarketgroup.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"
+        content="Luminary Market Group — marketing strategy that reads between the lines" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Luminary Market Group" />
+  <meta name="twitter:description" content="Marketing strategy that reads between the lines." />
+  <meta name="twitter:image" content="https://luminarymarketgroup.com/og-image.jpg" />
+
+  <!-- ============================================================
+       FONTS  —  Libre Baskerville (editorial serif headings)
+                 + Inter (clean sans body)
+       Swap these in styles.css :root if you prefer other fonts.
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Accessibility: lets keyboard users jump straight to content -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============================================================
+       BRAND EMBLEM  —  defined once, reused in header + footer via <use>.
+       Dark tile + cream "LMG" monogram + ascending gold arrow
+       (the arrow = forward progress). Tweak colors right here, or
+       restyle via the gold tokens in styles.css.
+       ============================================================ -->
+  <svg width="0" height="0" class="svg-sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="lmgTileGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2c2a25" />
+        <stop offset="1" stop-color="#161510" />
+      </linearGradient>
+      <symbol id="lmg-emblem" viewBox="0 0 52 52">
+        <!-- dark rounded tile with a gold hairline border -->
+        <rect x="1.5" y="1.5" width="49" height="49" rx="13"
+              fill="url(#lmgTileGrad)" stroke="#b08d4f" stroke-width="1.3" stroke-opacity="0.7" />
+        <!-- LMG monogram in the editorial serif -->
+        <text x="26" y="28.5" text-anchor="middle"
+              font-family="'Libre Baskerville','Baskerville',Georgia,serif"
+              font-size="15.5" font-weight="700" letter-spacing="0.6" fill="#f4ece0">LMG</text>
+        <!-- ascending arrow: runs flat, then up-right with a right-angle head -->
+        <path d="M14 39 H27 L35 31" fill="none" stroke="#b08d4f"
+              stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M30.5 31 H35 V35.5" fill="none" stroke="#b08d4f"
+              stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ============================================================
+       HEADER / NAVIGATION
+       ============================================================ -->
+  <header class="site-header" id="top">
+    <div class="container nav-wrapper">
+      <!-- Logo lockup (left): SVG monogram emblem + serif wordmark -->
+      <a href="#top" class="brand" aria-label="Luminary Market Group — home">
+        <svg class="brand-emblem" aria-hidden="true" focusable="false">
+          <use href="#lmg-emblem" />
+        </svg>
+        <span class="brand-word">Luminary Market Group</span>
+      </a>
+
+      <!-- Mobile menu toggle (hidden on desktop via CSS) -->
+      <button class="nav-toggle" id="navToggle"
+              aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <!-- Anchor links + CTA (right) -->
+      <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+        <!-- "Book a Meeting" lives only in the gold CTA below (no duplicate link) -->
+        <a href="#book" class="btn btn-primary nav-cta">Book a Meeting</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Boutique Marketing &amp; Financial Strategy</p>
+
+          <!-- HERO HEADLINE — edit text here -->
+          <h1 id="hero-title">Marketing strategy that reads between the lines.</h1>
+
+          <!-- HERO SUBHEAD — edit text here -->
+          <p class="hero-subhead">
+            Luminary Market Group helps businesses understand their numbers,
+            sharpen their message, and grow with intention. From financial
+            analysis to full-scale campaigns, we turn insight into momentum.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#book" class="btn btn-primary btn-lg">Book a Meeting</a>
+            <a href="#services" class="btn btn-ghost btn-lg">Explore Services</a>
+          </div>
+        </div>
+
+        <!-- Hero visual — on-brand SVG (no stock photos). Pure vector,
+             so it stays crisp at any size and matches the palette. -->
+        <figure class="hero-visual reveal" aria-hidden="true">
+          <svg class="hero-chart" viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="heroCard" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#23211c" />
+                <stop offset="1" stop-color="#141310" />
+              </linearGradient>
+              <radialGradient id="heroGlow" cx="78%" cy="20%" r="55%">
+                <stop offset="0" stop-color="#b08d4f" stop-opacity="0.35" />
+                <stop offset="1" stop-color="#b08d4f" stop-opacity="0" />
+              </radialGradient>
+              <linearGradient id="heroLine" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#c9a566" />
+                <stop offset="1" stop-color="#e3c483" />
+              </linearGradient>
+            </defs>
+
+            <!-- charcoal card + soft gold glow -->
+            <rect x="1" y="1" width="518" height="438" rx="20" fill="url(#heroCard)"
+                  stroke="#b08d4f" stroke-width="1.2" stroke-opacity="0.45" />
+            <rect x="1" y="1" width="518" height="438" rx="20" fill="url(#heroGlow)" />
+
+            <!-- faint gridlines -->
+            <g stroke="#f4ece0" stroke-opacity="0.07" stroke-width="1">
+              <line x1="60" y1="120" x2="470" y2="120" />
+              <line x1="60" y1="180" x2="470" y2="180" />
+              <line x1="60" y1="240" x2="470" y2="240" />
+              <line x1="60" y1="300" x2="470" y2="300" />
+            </g>
+
+            <!-- ascending bars (faint cream) -->
+            <g fill="#f4ece0" fill-opacity="0.10">
+              <rect x="80"  y="300" width="44" height="60"  rx="5" />
+              <rect x="158" y="262" width="44" height="98"  rx="5" />
+              <rect x="236" y="214" width="44" height="146" rx="5" />
+              <rect x="314" y="170" width="44" height="190" rx="5" />
+              <rect x="392" y="120" width="44" height="240" rx="5" />
+            </g>
+
+            <!-- baseline -->
+            <line x1="60" y1="360" x2="470" y2="360" stroke="#b08d4f"
+                  stroke-opacity="0.4" stroke-width="1.5" />
+
+            <!-- rising trend line + arrowhead (forward progress, echoes the logo) -->
+            <path d="M102 322 L180 300 L258 250 L336 222 L414 150 L452 112"
+                  fill="none" stroke="url(#heroLine)" stroke-width="3.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M436 112 H452 V128" fill="none" stroke="#e3c483"
+                  stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+
+            <!-- data nodes -->
+            <g fill="#15140f" stroke="#e3c483" stroke-width="2.5">
+              <circle cx="102" cy="322" r="5" />
+              <circle cx="180" cy="300" r="5" />
+              <circle cx="258" cy="250" r="5" />
+              <circle cx="336" cy="222" r="5" />
+              <circle cx="414" cy="150" r="5" />
+            </g>
+          </svg>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICES  —  5 cards
+         To edit a card: change the <h3> title and <p> description.
+         Icons are inline SVG so they inherit the gold accent color.
+         ============================================================ -->
+    <section class="services section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">What We Do</p>
+          <h2 id="services-title">Services built on insight</h2>
+          <p class="section-intro">
+            Five focused engagements that connect your financial reality to
+            marketing that actually moves the needle.
+          </p>
+        </div>
+
+        <ul class="services-grid">
+          <!-- Card 1 -->
+          <li class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18" />
+                <path d="M7 14l3-4 3 3 4-6" />
+              </svg>
+            </span>
+            <h3>Financial Statement Analysis</h3>
+            <p>We analyze your financial statements to surface what's working and what isn't.</p>
+          </li>
+
+          <!-- Card 2 -->
+          <li class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18h6" />
+                <path d="M10 22h4" />
+                <path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z" />
+              </svg>
+            </span>
+            <h3>Improvement Insights</h3>
+            <p>We identify concrete areas where your company can improve.</p>
+          </li>
+
+          <!-- Card 3 -->
+          <li class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" />
+              </svg>
+            </span>
+            <h3>Social Media Management</h3>
+            <p>We run and grow your social media accounts.</p>
+          </li>
+
+          <!-- Card 4 -->
+          <li class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 11l18-6-6 18-3.5-7.5L3 11z" />
+              </svg>
+            </span>
+            <h3>Marketing Campaigns</h3>
+            <p>We design and build marketing campaigns tailored to your goals.</p>
+          </li>
+
+          <!-- Card 5 -->
+          <li class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="2" x2="12" y2="22" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </span>
+            <h3>Strategic Pricing</h3>
+            <p>We determine fair, competitive pricing for your products and services.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT  —  Meet Alex Karr
+         ============================================================ -->
+    <section class="about section section-alt" id="about" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <!-- Brand panel (replaces stock photo) — distills how we work. -->
+        <aside class="about-panel reveal" aria-label="Our approach">
+          <p class="panel-eyebrow">Our approach</p>
+          <ul class="pillars">
+            <li>Financial fluency</li>
+            <li>Creative strategy</li>
+            <li>A partner's attention</li>
+            <li>A consultant's rigor</li>
+          </ul>
+          <p class="panel-note">Every engagement, grounded in your numbers.</p>
+        </aside>
+
+        <div class="about-copy reveal">
+          <p class="eyebrow">About</p>
+          <!-- ABOUT HEADING — edit text here -->
+          <h2 id="about-title">Meet Alex Karr</h2>
+
+          <!-- ABOUT BODY — edit text here -->
+          <p>
+            Luminary Market Group was founded on a simple belief: good marketing
+            starts with good information. Led by Alex Karr, LMG combines financial
+            fluency with creative strategy — so the campaigns we build are grounded
+            in what your numbers are actually telling us.
+          </p>
+          <p>
+            We work closely with each client, analyzing financial statements to find
+            opportunities, managing social media presence, building campaigns that
+            connect, and pricing your offerings to compete and win. Whether you're
+            refining an established brand or building from the ground up, we bring a
+            partner's attention and a consultant's rigor to every engagement.
+          </p>
+          <p class="about-closer">Let's find out what your business is capable of.</p>
+
+          <a href="#book" class="btn btn-primary">Book a Meeting</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BOOK A MEETING
+         ============================================================ -->
+    <section class="book section" id="book" aria-labelledby="book-title">
+      <div class="container book-inner">
+        <div class="section-head reveal">
+          <p class="eyebrow">Let's Talk</p>
+          <h2 id="book-title">Book a meeting</h2>
+          <p class="section-intro">
+            Choose a time that works for you, or reach out by email — whichever
+            you prefer. We'll come prepared to listen.
+          </p>
+        </div>
+
+        <!-- ========================================================
+             CALENDLY INLINE EMBED  (configured & live)
+             --------------------------------------------------------
+             Scheduler for calendly.com/luminarymarketgroup/discovery-call.
+             To point at a different event later, edit the data-url below.
+               • hide_gdpr_banner=1 → removes Calendly's cookie strip
+               • primary_color=b08d4f → matches the site's gold accent
+             The "Email to schedule" button below is the fallback.
+             ======================================================== -->
+        <div class="calendly-placeholder reveal" id="calendly-embed"
+             aria-label="Scheduling calendar">
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/luminarymarketgroup/discovery-call?hide_gdpr_banner=1&primary_color=b08d4f"
+            style="min-width:320px;height:700px;"></div>
+          <script type="text/javascript"
+                  src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+
+        <!-- Fallback: always-available email option -->
+        <div class="book-fallback reveal">
+          <p>Prefer email? We'll get back to you within one business day.</p>
+          <a class="btn btn-primary btn-lg"
+             href="mailto:LuminaryMarketGroup@gmail.com?subject=Meeting%20Request%20%E2%80%94%20Luminary%20Market%20Group">
+            Email to schedule
+          </a>
+          <p class="book-email-plain">
+            or write us directly at
+            <a href="mailto:LuminaryMarketGroup@gmail.com">LuminaryMarketGroup@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <svg class="brand-emblem brand-emblem--footer" aria-hidden="true" focusable="false">
+          <use href="#lmg-emblem" />
+        </svg>
+        <span>Luminary Market Group</span>
+      </div>
+
+      <a class="footer-email" href="mailto:LuminaryMarketGroup@gmail.com">
+        LuminaryMarketGroup@gmail.com
+      </a>
+
+      <!-- Year is auto-filled by script.js -->
+      <p class="footer-copy">
+        &copy; <span id="year">2026</span> Luminary Market Group. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

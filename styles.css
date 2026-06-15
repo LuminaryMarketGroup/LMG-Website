@@ -1,0 +1,673 @@
+/* ============================================================
+   LUMINARY MARKET GROUP — styles.css
+   ------------------------------------------------------------
+   Quick-edit guide:
+   • Colors ............ see "DESIGN TOKENS" :root block below
+   • Fonts ............. --font-serif / --font-sans in :root
+   • Spacing / width ... --container, --section-y in :root
+   Mobile-first: base styles target small screens; @media
+   (min-width) blocks layer on tablet/desktop enhancements.
+   ============================================================ */
+
+/* ---------- DESIGN TOKENS (edit your brand here) ---------- */
+:root {
+  /* Brand palette — neutral base + single gold accent */
+  --color-bg:        #faf7f0;  /* warm off-white / cream (page background) */
+  --color-bg-alt:    #f2ecdf;  /* slightly deeper cream (alternating sections) */
+  --color-surface:   #ffffff;  /* cards */
+  --color-text:      #1c1b18;  /* charcoal / near-black (body text) */
+  --color-muted:     #5f5b53;  /* softened text for subheads/captions */
+  --color-line:      #e4ddcd;  /* hairline dividers & borders */
+
+  --color-gold:      #b08d4f;  /* THE accent — buttons, links, dividers */
+  --color-gold-dark: #8f6f37;  /* hover / active state for gold */
+  --color-gold-soft: #f0e7d4;  /* faint gold wash for backgrounds */
+
+  /* Typography */
+  --font-serif: "Libre Baskerville", "Baskerville", "Georgia", serif;
+  --font-sans:  "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Type scale — one consistent ramp used everywhere (≈1.18 ratio).
+     Edit a step here and it updates site-wide. */
+  --fs-xs:    0.8rem;     /* fine print: copyright */
+  --fs-sm:    0.9375rem;  /* small text: captions, card body, nav */
+  --fs-body:  1.0625rem;  /* default body (~17px) */
+  --fs-lead:  1.175rem;   /* lead paragraphs, hero subhead, list items */
+  --fs-h3:    1.3rem;     /* card titles */
+  --fs-h2:    clamp(1.8rem, 4vw, 2.4rem);   /* section titles */
+  --fs-h1:    clamp(2.3rem, 6vw, 3.4rem);   /* hero headline */
+  --fs-eyebrow: 0.75rem;  /* uppercase labels */
+
+  /* Line heights */
+  --lh-tight: 1.14;  /* headings */
+  --lh-body:  1.7;   /* body copy */
+
+  /* Layout */
+  --container: 1140px;   /* max content width */
+  --section-y: 4.5rem;   /* vertical rhythm between sections (mobile) */
+  --radius: 10px;        /* corner rounding */
+  --shadow: 0 18px 40px -22px rgba(28, 27, 24, 0.35);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- RESET / BASE ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;            /* native smooth scroll for # links */
+  scroll-padding-top: 84px;           /* offset so headings clear fixed header */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a { color: var(--color-gold-dark); }
+
+/* ---------- HEADINGS (editorial serif) ---------- */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin: 0 0 0.6em;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); line-height: 1.25; letter-spacing: 0; }
+
+/* Uppercase gold label that sits above headings */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  margin: 0 0 1rem;
+}
+
+/* ---------- LAYOUT HELPERS ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 1.4rem;
+}
+
+.section { padding-block: var(--section-y); }
+
+.section-alt { background-color: var(--color-bg-alt); }
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 2.75rem;
+  text-align: center;
+}
+/* Short gold rule under each section title — a consistent divider accent */
+.section-head h2::after {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 2px;
+  margin: 1.1rem auto 0;
+  background-color: var(--color-gold);
+}
+
+.section-intro {
+  color: var(--color-muted);
+  font-size: var(--fs-body);
+  margin: 1.25rem 0 0;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;             /* pill shape reads "premium" */
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease),
+              background-color 0.25s var(--ease),
+              color 0.25s var(--ease),
+              box-shadow 0.25s var(--ease);
+}
+
+.btn-lg { padding: 1rem 1.9rem; font-size: 1rem; }
+
+/* Primary = solid gold with dark text (high contrast, elegant) */
+.btn-primary {
+  background-color: var(--color-gold);
+  color: #1c1b18;
+  box-shadow: 0 10px 24px -14px rgba(176, 141, 79, 0.9);
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: var(--color-gold-dark);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Ghost = outline, for secondary actions */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-line);
+}
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  border-color: var(--color-gold);
+  color: var(--color-gold-dark);
+  transform: translateY(-2px);
+}
+
+/* ---------- HEADER / NAV ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(250, 247, 240, 0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+/* .is-scrolled added by JS once the user scrolls down */
+.site-header.is-scrolled {
+  border-bottom-color: var(--color-line);
+  box-shadow: 0 8px 30px -24px rgba(28, 27, 24, 0.5);
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 70px;
+}
+
+/* Logo lockup: SVG emblem + serif wordmark */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--color-text);
+}
+.brand-emblem {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: block;
+  transition: transform 0.3s var(--ease);
+}
+.brand:hover .brand-emblem { transform: translateY(-1px) scale(1.03); }
+.brand-word {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.12;
+}
+/* Footer uses the same emblem, slightly smaller, on the dark bar */
+.brand-emblem--footer { width: 36px; height: 36px; }
+
+.primary-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.primary-nav a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 0.98rem;
+}
+/* Animated gold underline on nav links */
+.primary-nav ul a {
+  position: relative;
+  padding-bottom: 2px;
+}
+.primary-nav ul a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+.primary-nav ul a:hover::after,
+.primary-nav ul a:focus-visible::after { transform: scaleX(1); }
+
+/* Hamburger toggle (mobile only) */
+.nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin-inline: auto;
+  background-color: var(--color-text);
+  transition: transform 0.3s var(--ease), opacity 0.2s var(--ease);
+}
+/* Morph hamburger → X when menu open */
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- MOBILE NAV (default = small screens) ---------- */
+.primary-nav {
+  position: fixed;
+  inset: 70px 0 auto 0;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-line);
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.4rem;
+  padding: 1.25rem 1.4rem 1.75rem;
+  display: none;                     /* toggled to flex by JS */
+  box-shadow: var(--shadow);
+}
+.primary-nav.is-open { display: flex; }
+.primary-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.primary-nav ul a {
+  display: block;
+  padding: 0.75rem 0.25rem;
+  font-size: 1.05rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.nav-cta { margin-top: 0.75rem; }
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative;
+  padding-block: 3rem 4rem;
+  overflow: hidden;
+}
+/* faint gold glow behind hero */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(circle, var(--color-gold-soft) 0%, transparent 65%);
+  opacity: 0.7;
+  z-index: 0;
+}
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2.5rem;
+}
+.hero-subhead {
+  font-size: var(--fs-lead);
+  color: var(--color-muted);
+  max-width: 36ch;
+  margin: 0 0 2rem;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+/* Hero SVG visual (replaces the old photo) */
+.hero-visual { margin: 0; }
+.hero-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* shadow follows the rounded card shape */
+  filter: drop-shadow(0 26px 50px rgba(20, 19, 15, 0.45));
+}
+
+/* ---------- SERVICES ---------- */
+/* Flexbox (not grid) so the trailing 2 cards center under the first 3
+   instead of leaving a lopsided gap. Cards wrap: 1-up → 2-up → 3-up. */
+.services-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+.service-card {
+  flex: 1 1 300px;        /* grow/shrink around a 300px ideal */
+  max-width: 360px;       /* keeps cards tidy on the centered last row */
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 1.9rem 1.7rem;
+  transition: transform 0.3s var(--ease),
+              box-shadow 0.3s var(--ease),
+              border-color 0.3s var(--ease);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: var(--color-gold);
+}
+.service-card h3 { margin-bottom: 0.4rem; }
+.service-card p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+}
+.service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1.1rem;
+  border-radius: 12px;
+  background-color: var(--color-gold-soft);
+  color: var(--color-gold-dark);     /* SVG strokes use currentColor */
+}
+.service-icon svg { width: 26px; height: 26px; }
+
+/* ---------- ABOUT ---------- */
+.about-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+/* On mobile, show the heading/copy first, the panel second */
+.about-copy  { order: 1; }
+.about-panel { order: 2; }
+/* Branded "approach" panel (replaces the old photo) */
+.about-panel {
+  background: linear-gradient(160deg, #23211c 0%, #141310 100%);
+  border: 1px solid rgba(176, 141, 79, 0.45);
+  border-radius: var(--radius);
+  padding: 2.4rem 2.2rem;
+  box-shadow: var(--shadow);
+}
+/* Same look as .eyebrow, but gold-bright for the dark panel */
+.panel-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin: 0 0 1.2rem;
+}
+.pillars {
+  list-style: none;
+  margin: 0 0 1.4rem;
+  padding: 0;
+}
+.pillars li {
+  position: relative;
+  font-family: var(--font-serif);
+  font-size: var(--fs-lead);
+  color: #f6f0e4;
+  padding: 0.8rem 0 0.8rem 1.9rem;
+  border-bottom: 1px solid rgba(244, 236, 224, 0.12);
+}
+.pillars li:last-child { border-bottom: none; }
+.pillars li::before {           /* gold forward-arrow marker */
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 0.8rem;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+}
+.panel-note {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-sm);
+  color: #b9b1a1;
+}
+.about-copy p {
+  color: var(--color-muted);
+  margin: 0 0 1.1rem;
+}
+/* Left-aligned gold divider mirrors the centered one on section titles */
+.about-copy h2::after {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 2px;
+  margin: 1rem 0 0;
+  background-color: var(--color-gold);
+}
+.about-closer {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-lead);
+  color: var(--color-text) !important;
+  margin-bottom: 1.6rem !important;
+}
+
+/* ---------- BOOK A MEETING ---------- */
+.book-inner { max-width: 820px; margin-inline: auto; }
+
+.calendly-placeholder {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);  /* subtle frame around the embed */
+  border-radius: var(--radius);
+  overflow: hidden;                      /* clips the embed to rounded corners */
+  margin-bottom: 1.75rem;
+}
+
+.book-fallback {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+.book-fallback > p { color: var(--color-muted); margin: 0 0 1rem; }
+.book-email-plain {
+  margin: 1rem 0 0;
+  font-size: var(--fs-sm);
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+  background-color: var(--color-text);
+  color: #d9d4c9;
+  padding-block: 2.5rem;
+}
+.footer-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  text-align: center;
+}
+.footer-brand {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.footer-email { color: var(--color-gold); text-decoration: none; }
+.footer-email:hover { text-decoration: underline; }
+.footer-copy {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: #9c968a;
+}
+
+/* ---------- ACCESSIBILITY HELPERS ---------- */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 200;
+  background: var(--color-text);
+  color: #fff;
+  padding: 0.7rem 1.1rem;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+}
+.skip-link:focus { left: 0; }
+
+/* Visible focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-gold-dark);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- SCROLL-REVEAL ANIMATION ---------- */
+/* Elements start hidden/offset; JS adds .is-visible when in view. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (≥ 640px)
+   ============================================================ */
+@media (min-width: 640px) {
+  /* services now use a centered flex layout — see .services-grid above */
+}
+
+/* ============================================================
+   RESPONSIVE — DESKTOP (≥ 880px)
+   ============================================================ */
+@media (min-width: 880px) {
+  :root { --section-y: 6rem; }
+
+  /* Reveal the inline nav, hide the hamburger */
+  .nav-toggle { display: none; }
+  .primary-nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  .primary-nav ul {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .primary-nav ul a {
+    padding: 0;
+    border-bottom: none;
+    font-size: 0.98rem;
+  }
+  .nav-cta { margin-top: 0; }
+
+  /* Two-column hero & about */
+  .hero { padding-block: 4.5rem 5.5rem; }
+  .hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 3.5rem;
+  }
+  .hero-subhead { max-width: 42ch; }
+
+  .about-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    gap: 4rem;
+  }
+  /* On desktop, restore source order: panel left, copy right */
+  .about-copy  { order: 0; }
+  .about-panel { order: 0; }
+
+  /* Footer becomes a single row */
+  .footer-grid {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — LARGE DESKTOP (≥ 1100px)
+   ============================================================ */
+@media (min-width: 1100px) {
+  .hero-subhead { font-size: 1.2rem; }
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL PHONES (≤ 380px)
+   Keep the logo lockup from crowding the menu button.
+   ============================================================ */
+@media (max-width: 380px) {
+  .brand-emblem { width: 36px; height: 36px; }
+  .brand-word { font-size: 0.98rem; }
+}
+
+/* ============================================================
+   REDUCED MOTION — respect user preference
+   Disables transforms/animations for those who opt out.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
