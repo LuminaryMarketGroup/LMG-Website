@@ -43,7 +43,7 @@ python -m http.server 8000
 | Logo monogram              | `index.html` → the `#lmg-emblem` `<symbol>` near the top   |
 | Hero / About visuals       | `index.html` — inline SVG (no photos); edit shapes/colors  |
 | Service cards              | `index.html` → `.services-grid` (title, description, icon) |
-| Email address              | search `index.html` for `LuminaryMarketGroup@gmail.com`    |
+| Email address              | search `index.html` for `AlexKarr@luminarymarketgroup.com` |
 
 All colors are CSS variables, so changing the single line `--color-gold` recolors
 every button, link, divider, and accent at once.
